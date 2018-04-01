@@ -53,7 +53,7 @@ function listPort() {
 
 function buyCargo(stock) {
   //buy produce from the current port, then update cash and hold info if good sale
-  if (cargo.length < maxCargo && cash > portInfo[nowPort][stock]){
+  if (cargo.length < maxCargo && cash >= portInfo[nowPort][stock]){
     cash -= portInfo[nowPort][stock];
     document.getElementById("cash").innerHTML = "$" + cash;
     cargo[cargo.length] = stock;
@@ -95,7 +95,10 @@ function listCargo() {
   if (cargo.length < 1){
   document.getElementById("hold").innerHTML = "empty";
   } else {
-    document.getElementById("hold").innerHTML = "<ul><li>"+ cargo.join("</li><li>") + "</li></ul>";
+
+    document.getElementById("hold").innerHTML = "<ul><li>"+ cargo.map(element => {
+  return cargoList[element];
+}).join("</li><li>") + "</li></ul>";
   }
 }
 

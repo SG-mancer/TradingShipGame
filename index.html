@@ -10,15 +10,21 @@
 
   <!--<link rel="stylesheet" href="css/grid.css">-->
   <title>Trading Ship Game</title>
-
+  <link rel="stylesheet" href="css/grid.css">
 </head>
 
-<body>
+<body class="grid">
 
-  <p id="port">normal</p>
+<div class="title">
+  Trading Ship game
+</div>
+<div class="location">
+<h3> 	&#127796;<div id="port">normal</div></h3>
 <p id="portTax"></p>
 
-<table>
+<br/>
+<h3>&#127980;</h3>
+<table align="center">
   <tr>
     <th>Fertiliser</th>
     <th>Cereal</th>
@@ -38,23 +44,27 @@
     <td><button type="button" onclick="buyCargo(4)">Buy</button></td>
   </tr>
 </table>
-<hr/>
+</div>
+
+<div class="navigate">
 <br/>
-<p>News: <i id="gamenews"> </i></p>
-<button type="button" onclick="moveShip()">Sail On</button>
-<hr>
-<p id=cash>$100</p>
-<p id=hold>Hold: empty</p>
+<p>&#128478; News: <i id="gamenews"> </i></p>
+<button type="button" onclick="moveShip()">&#9875; Sail On</button>
+</div>
+
+<div class="vessel">
+<h3>&#128674;</h3>
+<h4 id=cash>$100</h4>
 <br/>
-<button type"button" onclick="sellCargo(0)">Sell 1</button> \
-<button type"button" onclick="sellCargo(1)">Sell 2</button> \
-<button type"button" onclick="sellCargo(2)">Sell 3</button> \
+<div id=hold>Hold: empty</div>
+<br/>
+<button type"button" onclick="sellCargo(0)">Sell 1</button>
+<button type"button" onclick="sellCargo(1)">Sell 2</button>
+<button type"button" onclick="sellCargo(2)">Sell 3</button>
 <button type"button" onclick="sellCargo(3)">Sell 4</button>
+</div>
 
-    <script  src="js/index.js"></script>
-
-
-
+<script  src="js/index.js"></script>
 
 </body>
 

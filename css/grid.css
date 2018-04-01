@@ -1,0 +1,36 @@
+* {
+  margin: 0;
+  padding: 2px;
+}
+
+.grid{
+  display: grid;
+  text-align: center;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 4fr 4fr 1fr;
+  grid-template-areas:
+  "title title . ."
+  ". location vessel ."
+  ". navigate navigate .";
+  background-color: #341809;
+}
+
+.title {
+  grid-area: title;
+  color: #FC600A;
+}
+
+.location{
+  grid-area: location;
+  background-color: #FFE8DC;
+}
+
+.navigate{
+  grid-area: navigate;
+  background-color: #FE9F6D;
+}
+
+.vessel{
+  grid-area: vessel;
+  background-color: #9D3802;
+}
