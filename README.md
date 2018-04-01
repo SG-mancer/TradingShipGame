@@ -1,18 +1,16 @@
-#Trading Ship Game
+# Trading Ship Game #
 
 This is a game where the player can travel from one port to the next buying or selling commodities.
 
-##how the game will play...
-The play will be able to click a button to travel to the next port.
-Buy up to four commodities to take to the next Port.
-Sell commodities (paying the landing tax).
+## game play... ##
 
-The commodities currently are Fertilizer, Cereal, Tools and Booze.
+* Play begins in a random of 4 ports, with the player having a vessel that can hold 4 commodities and $100.
 
-In the future, there will be events that occur randomly on travelling making the cost of commodities change in different ports, and maybe events that occur durig travelling to the next port. Prices will also change depending on how rare a commodity is.
+* The player can buy commodities in the current port, sell commodities from their hold (attracting a tarrif) or sail onto the next port.
 
+* Commoditie prices in each port are slightly different.
 
-##Development
+* Each turn a random event either increases taxes, increases or decreases a commodity price in one random port.
 
-###15Mar18
-I made a first attempt at mocking it up in Codepen.io then exported it and imported it via bash. 
+### There is no winning condition. ###
+
