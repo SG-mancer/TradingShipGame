@@ -106,7 +106,7 @@ function priceChange () {
   // Change the tax or price of goods in a random port and report it as news.
   var effectPort = Math.floor(Math.random() * portInfo.length);
   var effectCargo = Math.floor(Math.random() * 4)+1;
-  switch(Math.floor(Math.random() * 3)){
+  switch(Math.floor(Math.random() * 4)){
     case 0:   //change tax
       portInfo[effectPort][0] += 0.01;
       portInfo[effectPort][0] -= portInfo[effectPort][0]%0.01; //to round?
@@ -119,6 +119,11 @@ function priceChange () {
     case 2: //price increase
       portInfo[effectPort][effectCargo] += Math.round(portInfo[effectPort][effectCargo]*(Math.floor(Math.random() * 10))/100);
       document.getElementById("gamenews").innerHTML = "Shortage of "+cargoList[effectCargo]+" at " +portName[effectPort]+ "Port.";
+      break;
+    case 3: //pirates steal money
+      cash -= 100;
+      document.getElementById("gamenews").innerHTML = "Pirates steal $100.";
+      document.getElementById("cash").innerHTML = "$" + cash;
       break;
   }
 }
