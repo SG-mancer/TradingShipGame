@@ -29,6 +29,7 @@ moveShip();
 
 
 function moveShip(){
+  checkEnd();
   priceChange();
   // Move the ship to the next port
   if(nowPort < (portInfo.length -1)){
@@ -125,5 +126,13 @@ function priceChange () {
       document.getElementById("gamenews").innerHTML = "Pirates steal $100.";
       document.getElementById("cash").innerHTML = "$" + cash;
       break;
+  }
+}
+
+function checkEnd() {
+  if (cash < 1){
+    //end the game if cash is less than $1
+    alert("game over");
+    document.location.href = "";
   }
 }
