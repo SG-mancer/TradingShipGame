@@ -12,25 +12,25 @@
   "title title . ."
   ". location vessel ."
   ". navigate navigate .";
-  background-color: #341809;
+  background-color: #013bda;
 }
 
 .title {
   grid-area: title;
-  color: #FC600A;
+  color: #80ced6;
 }
 
 .location{
   grid-area: location;
-  background-color: #FFE8DC;
+  background-color: #d5f4e6;
 }
 
 .navigate{
   grid-area: navigate;
-  background-color: #FE9F6D;
+  background-color: #618685;
 }
 
 .vessel{
   grid-area: vessel;
-  background-color: #9D3802;
+  background-color: #fefbd8;
 }
