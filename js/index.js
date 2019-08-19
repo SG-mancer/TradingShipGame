@@ -139,10 +139,6 @@ function listCargo() {
   return cargoList[element]+" <button type\"button\" onclick=\"sellCargo("+(cHold++)+")\"> Sell </button>";
 }).join("</li><li>") + "</li></ul>";
   }
-
-  for (var i=0; i <=portInfo.length;i++){
-    alert(portInfo[i][0]);
-  }
 }
 
 function priceChange () {
@@ -152,21 +148,61 @@ function priceChange () {
   if (effectCargo == 0){ //check not effecting tax
      effectCargo = 1;
   }
-  switch(Math.floor(Math.random() * 4)){
+  switch(Math.floor(Math.random() * 8)){
     case 0:   //change tax 1-6%
       portInfo[effectPort][0] = Math.floor(portInfo[effectPort][0]*100 + 1 + Math.floor(Math.random()*5))/100;
-      portInfo[effectPort][0] -= portInfo[effectPort][0]%0.01; //to round
-      document.getElementById("gamenews").innerHTML = "Tarrif increase in "+portName[effectPort]+"! Now: "+portInfo[effectPort][0]*100+"%";
+      document.getElementById("gamenews").innerHTML = "Tarrif increase in "+portName[effectPort]+"! Now: "+Math.floor(portInfo[effectPort][0]*100)+"%";
       break;
+
     case 1:  //price decrease
       portInfo[effectPort][effectCargo] -= 1+Math.round(portInfo[effectPort][effectCargo]*(Math.random()*15+20)/100);
       document.getElementById("gamenews").innerHTML = "Price collapse of "+cargoList[effectCargo]+" at " +portName[effectPort]+ ". Now: $"+portInfo[effectPort][effectCargo]+" a unit.";
       break;
+
     case 2: //price increase
       portInfo[effectPort][effectCargo] += 2+Math.round(portInfo[effectPort][effectCargo]*(Math.random()*10)/100);
       document.getElementById("gamenews").innerHTML = "Shortage of "+cargoList[effectCargo]+" at " +portName[effectPort]+ ".Now: $"+portInfo[effectPort][effectCargo]+" a unit.";
       break;
-    case 3: //pirates steal money if in same location
+
+    case 3: //next Port closed, skipping
+      if(nowPort < portInfo.length-1){
+        nowPort +=1;
+      }else{
+        nowPort =0;
+      }
+      document.getElementById("gamenews").innerHTML = portName[nowPort]+" closed, sailing to next port...";
+      break;
+
+    case 4: //bad winds (moving back to same port)
+      nowPort -=1;
+      document.getElementById("gamenews").innerHTML = "Bad winds, returning to "+portName[nowPort+1]+".";
+      break;
+
+    case 5: //wind direction change (moving to port before port)
+      if(nowPort==0){
+        nowPort = portInfo.length-2;
+      }else{
+        nowPort -=2;
+      }
+      document.getElementById("gamenews").innerHTML = "Wind Change, now sailing to " + portName[nowPort+1]+".";
+      break;
+
+    case 6: //storm has chance to loose cargo...
+      var damage = Math.round(Math.random()*maxCargo);
+      switch(cargo[damage]) {
+        case 0:
+        case undefined:
+          document.getElementById("gamenews").innerHTML = "Storm! Luckily no cargo damaged.";
+          break;
+        default:
+          document.getElementById("gamenews").innerHTML = "Storm! Some "+cargoList[cargo[damage]]+" was lost...";
+          cargo.pop(cargo[damage]);
+          listCargo();
+          break;
+      }
+      break;
+
+    case 7: //pirates... end the game currently...
       if (effectPort == nowPort) {
         cash = 1;
         document.getElementById("gamenews").innerHTML = "Pirates attack and steal your cash.";
@@ -174,6 +210,7 @@ function priceChange () {
         break;
       } else {
         document.getElementById("gamenews").innerHTML = "Pirates reported at "+portName[effectPort]+".";
+        break;
       }
   }
 }
