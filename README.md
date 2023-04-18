@@ -14,3 +14,5 @@ This is a game where the player can travel from one port to the next buying or s
 
 ### There is no winning condition. ###
 
+![Screenshot of game with $99 and empty hold](Readme-Screenshot.png 
+"Screenshot")
